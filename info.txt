@@ -1,0 +1,12 @@
+Visa Number : 4000056655665556
+CSV : 123
+Name : Ali
+last : Mansor
+
+County  : United Kingdom
+city: Landon
+post code : BR4 4BL
+
+
+
+ $env:NODE_OPTIONS = "--openssl-legacy-provider"

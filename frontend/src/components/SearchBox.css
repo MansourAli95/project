@@ -1,0 +1,31 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Space from other navbar items */
+}
+
+.search-input {
+  border-radius: 25px; /* Rounded corners for input */
+  border: 1px solid #ced4da; /* Light border for input */
+  padding: 10px 20px; /* Padding inside the input */
+  margin-right: 10px; /* Space between input and button */
+  flex: 1; /* Allow input to take up remaining space */
+  transition: border-color 0.3s ease-in-out; /* Smooth border color transition */
+}
+
+.search-input:focus {
+  border-color: #28a745; /* Change border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Add shadow on focus */
+}
+
+.search-button {
+  border-radius: 25px; /* Rounded corners for button */
+  padding: 10px 20px; /* Padding inside the button */
+  border: 1px solid transparent; /* Border to keep button size consistent */
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+}
+
+.search-button:hover {
+  background-color: #28a745; /* Change background color on hover */
+  color: white; /* Ensure text color is white on hover */
+}

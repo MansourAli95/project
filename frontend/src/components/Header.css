@@ -1,0 +1,75 @@
+.brand-name {
+  font-weight: bold;
+  font-size: 1.8rem; /* Increase font size for prominence */
+  color: #18c9e5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  margin-right: 2rem; /* Adjust space between brand and search */
+}
+
+.search-form {
+  position: relative;
+  width: 300px; /* Control search box width */
+}
+
+.search-box-container {
+  display: flex;
+  align-items: center;
+  border-radius: 20px; /* Rounded corners for a modern look */
+  background-color: #181818; /* Darker background for contrast */
+  border: 1px solid #333;
+  padding: 5px;
+  overflow: hidden; /* Hide overflow to create a smooth look */
+}
+
+.search-input {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  outline: none; /* Remove focus outline */
+}
+
+.search-input::placeholder {
+  color: #ccc; /* Lighter placeholder color */
+}
+
+.search-button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 20px 20px 0; /* Rounded corners for the button side */
+  cursor: pointer;
+  color: #fff;
+}
+
+.search-button:hover {
+  background-color: #333; /* Darken on hover */
+}
+
+/* Adjust Navbar styling */
+
+.navbar {
+  border-bottom: 1px solid #333; /* Subtle border */
+  padding: 10px 0; /* Add some padding */
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #fff; /* White text color */
+  font-weight: normal; /* Less bold text for nav links */
+  margin: 10px 10px; /* Spacing between nav links */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.nav-link:hover {
+  color: #f8f9fa; /* Lighten color on hover */
+}
+
+
+
+ 

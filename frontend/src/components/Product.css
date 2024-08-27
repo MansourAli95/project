@@ -1,0 +1,103 @@
+/* Glassmorphism Card */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2); /* Slightly transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for definition */
+  backdrop-filter: blur(15px); /* Pronounced blur effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Elevated shadow for depth */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow content */
+  position: relative; /* Position relative for overlay effect */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transitions */
+}
+
+.glass-effect:hover {
+  transform: scale(1.04); /* Slightly zoom in on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+/* Product Image */
+.product-img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-img:hover {
+  opacity: 0.85; /* Slightly fade effect */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Product Name */
+.product-name {
+  color: #2d3436; /* Darker text color for readability */
+  font-size: 1.5rem; /* Prominent font size */
+  font-weight: 700; /* Bold font weight */
+  line-height: 1.3; /* Improved line height */
+  margin-bottom: 0.5rem; /* Space below the name */
+}
+
+/* Product Price */
+.product-price {
+  color: #d63031; /* Bright red color for price */
+  font-size: 1.25rem; /* Slightly larger font size */
+  font-weight: 600; /* Bold font weight */
+  margin-top: 0.5rem; /* Space above the price */
+}
+
+/* Card Body */
+.card-body {
+  padding: 1.5rem; /* Increased padding for better spacing */
+  position: relative; /* Position relative for overlay effect */
+}
+
+/* Card Link */
+.card-link {
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Rating Container */
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between rating and reviews text */
+  color: #f1c40f; /* Gold color for rating stars */
+  margin-bottom: 0.5rem; /* Space below rating */
+}
+
+/* Price Symbol */
+.price-symbol {
+  color: #333; /* Dark color for the dollar symbol */
+  font-size: 1.25rem; /* Slightly larger font size */
+}
+
+/* Overlay Effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade and scale effects */
+  border-radius: 12px; /* Match border radius of the card */
+}
+
+.glass-effect:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Overlay Content */
+.overlay-content {
+  color: #fff; /* White text for contrast */
+  font-size: 1.5rem; /* Larger font size for visibility */
+  text-align: center; /* Center align text */
+  padding: 1rem; /* Padding inside the overlay */
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for overlay content */
+  border-radius: 8px; /* Rounded corners for overlay content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for overlay content */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+}
+
