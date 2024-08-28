@@ -3,6 +3,9 @@ import { Card } from 'react-bootstrap';
 import Rating from './Rating';
 import { Link } from 'react-router-dom';
 import './Product.css'; // Import the CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 function Product({ product }) {
   return (
@@ -28,7 +31,9 @@ function Product({ product }) {
                     color={'#f1c40f'} /> {/* Gold color for rating */}
           </div>
         </Card.Text>
-
+        <div className="fav-container">
+          <FontAwesomeIcon icon={faHeart} className="fav-icon" />
+        </div>
         <Card.Text as="h3" className="product-price">
           <span className="price-symbol">$</span> 
           <span className="price-value">{product.price}</span>
