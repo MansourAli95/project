@@ -25,8 +25,12 @@ function Header({match}) {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-   
-            <Navbar.Brand > <span className="brand-name">  Simply Market</span> </Navbar.Brand>
+          {/* <img
+           src="" // Replace with your logo URL
+            alt="Simply Market Logo"
+             className="logo"
+           /> */}
+            <Navbar.Brand > <span className="brand-name">  Simply</span> </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -86,8 +90,14 @@ function Header({match}) {
               )}
               <LinkContainer to="/about">
                 <Nav.Link>
-                  <i className="fas fa-info-circle"></i> About Us
+                  <i className="about"></i> About Us
                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/favorite">
+              <Nav.Link>
+              <i className="fav"></i> Favorite
+              </Nav.Link>
+
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import './SearchBox.css'; // Import custom CSS for styling
+import './Header.css'; // Import custom CSS for styling
 
 function SearchBox() {
   const [keyword, setKeyword] = useState('');

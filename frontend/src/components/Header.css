@@ -1,7 +1,7 @@
 .brand-name {
   font-weight: bold;
   font-size: 1.8rem; /* Increase font size for prominence */
-  color: #18c9e5;
+  color: #ff8000;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   margin-right: 2rem; /* Adjust space between brand and search */
 }
@@ -41,7 +41,7 @@
   padding: 8px 12px;
   border-radius: 0 20px 20px 0; /* Rounded corners for the button side */
   cursor: pointer;
-  color: #fff;
+  color: #ff8000;
 }
 
 .search-button:hover {
@@ -51,7 +51,7 @@
 /* Adjust Navbar styling */
 
 .navbar {
-  border-bottom: 1px solid #333; /* Subtle border */
+  border-bottom: 1px solid #ff7622 ; /* Subtle border */
   padding: 10px 0; /* Add some padding */
 }
 
@@ -67,9 +67,5 @@
 }
 
 .nav-link:hover {
-  color: #f8f9fa; /* Lighten color on hover */
+  color: #ff8000 !important; /* Lighten color on hover */
 }
-
-
-
- 
