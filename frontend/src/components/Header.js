@@ -88,17 +88,19 @@ function Header({match}) {
                   </LinkContainer>
                 </NavDropdown>
               )}
+
               <LinkContainer to="/about">
                 <Nav.Link>
                   <i className="about"></i> About Us
                </Nav.Link>
               </LinkContainer>
+              {userInfo &&
               <LinkContainer to="/favorite">
               <Nav.Link>
               <i className="fav"></i> Favorite
               </Nav.Link>
 
-              </LinkContainer>
+              </LinkContainer>}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -42,11 +42,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
-
+    'django_extensions',
     'base.apps.BaseConfig',
 ]
 
-
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

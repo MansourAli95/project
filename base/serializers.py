@@ -47,7 +47,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     reviews = serializers.SerializerMethodField(read_only=True)
-
+    is_favorite = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Product
         fields = '__all__'
@@ -57,7 +57,12 @@ class ProductSerializer(serializers.ModelSerializer):
         serializer = ReviewSerializer(reviews, many=True)
         return serializer.data
 
-
+    def get_is_favorite(self,obj):
+        if "context" in self.context.keys():
+            user = self.context["request"].user 
+            if not user.is_anonymous:  
+                return obj._id in [fav.product._id for fav in user.favourite_set.all()]
+        return False
 class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShippingAddress
@@ -100,6 +105,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
+      product = ProductSerializer(read_only = True)
       class Meta:
           model = Favourite
           fields = '__all__'

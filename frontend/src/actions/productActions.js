@@ -32,15 +32,37 @@ import {
 } from '../constants/productConstants'
 
 
-export const listProducts = (keyword = '') => async (dispatch) => {
+export const listProducts = (keyword = '') => async (dispatch,getState) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
+        const {
+            userLogin: { userInfo },
+        } = getState()
+        let resdata 
+        if(userInfo?.token)
+        {const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo?.token}`
+            }
+        }
 
-        const { data } = await axios.get(`/api/products${keyword}`)
-
+         const{ data } = await axios.get(
+           `/api/products${keyword}`  ,
+            config
+        )
+    
+        resdata = data
+    }
+        else{
+           const   { data } = await axios.get(
+                `/api/products${keyword}` )
+        resdata = data
+        }
+         
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
-            payload: data
+            payload: resdata
         })
 
     } catch (error) {
@@ -78,6 +100,8 @@ export const listTopProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
+        
+       
 
         const { data } = await axios.get(`/api/products/${id}`)
 
@@ -137,6 +161,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
 
 
+
 export const createProduct = () => async (dispatch, getState) => {
     try {
         dispatch({
@@ -174,7 +199,6 @@ export const createProduct = () => async (dispatch, getState) => {
         })
     }
 }
-
 
 
 export const updateProduct = (product) => async (dispatch, getState) => {
@@ -259,3 +283,37 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
         })
     }
 }
+
+
+
+ 
+
+
+
+export const getFavorits = () => async (dispatch, getState) => {
+    try { 
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.get(
+            `/api/products/favorites/`,
+            {},
+            config
+        ) 
+
+
+    } catch (error) {
+        
+    }
+}
+
+
