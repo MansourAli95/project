@@ -124,13 +124,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+     
 }
+DATABASES["default"]  = dj_database_url.parse('postgresql://postgres:yxuJVujeuRICpbqrzYcGlCVFjYPyCyuM@junction.proxy.rlwy.net:49464/railway')
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -195,6 +193,16 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+CLOUDINARY_STORAGE = {
+  'CLOUD_NAME':'duws0azyi',
+  'API_KEY':'932859126869225',
+  'API_SECRET':'dfVci7QEwGx39aAt1maIsnRXwgI'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 
 # Dont forget to reset database connection and hide password
