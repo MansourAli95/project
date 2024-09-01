@@ -26,7 +26,7 @@ SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'project-d3c6.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'project-d3c6.onrender.com','project-qsbx.onrender.com']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
+
     'django_extensions',
     'base.apps.BaseConfig',
 ]
@@ -124,11 +125,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 import dj_database_url
 DATABASES = {
      
 }
-DATABASES["default"]  = dj_database_url.parse('postgresql://postgres:yxuJVujeuRICpbqrzYcGlCVFjYPyCyuM@junction.proxy.rlwy.net:49464/railway')
+DATABASES["default"]  = dj_database_url.parse('postgresql://postgres:tjItixEjOFRrmBkWQRTEAxMNbTioTJJC@autorack.proxy.rlwy.net:55813/railway')
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
