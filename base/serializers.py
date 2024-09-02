@@ -3,6 +3,18 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Product, Order, OrderItem, ShippingAddress, Review , Favourite
 
+ 
+
+class DashboardSerializer(serializers.Serializer):
+    users_count = serializers.IntegerField()
+    orders_delivered_count = serializers.IntegerField()
+    total_income = serializers.DecimalField(max_digits=10, decimal_places=2)
+    number_of_products = serializers.IntegerField()
+    monthly_revenue = serializers.ListField(child=serializers.DictField())
+    top_products = serializers.ListField(child=serializers.DictField())
+    top_products_ratings = serializers.ListField(child=serializers.DictField())
+    products_in_stock = serializers.ListField(child=serializers.DictField())
+
 
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)

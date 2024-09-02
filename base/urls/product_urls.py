@@ -3,6 +3,7 @@ from base.views import product_views as views
 from base.views.FavoriteView import FavoriteView
 urlpatterns = [
 
+    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('', views.getProducts, name="products"),
 
     path('favorites/',FavoriteView.as_view() , name = "get-user-favorites"),

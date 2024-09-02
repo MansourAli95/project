@@ -83,8 +83,7 @@ def updateProduct(request, pk):
     product.brand = data['brand']
     product.countInStock = data['countInStock']
     product.category = data['category']
-    product.description = data['description']
-
+    product.description = data['description'] 
     product.save()
 
     serializer = ProductSerializer(product, many=False)
@@ -99,6 +98,7 @@ def deleteProduct(request, pk):
     return Response('Producted Deleted')
 
 
+
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
@@ -106,8 +106,8 @@ def uploadImage(request):
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
 
-    product.image = request.FILES.get('image')
-    product.save()
+    product.image = request.data.get('image')  
+    product.save() 
 
     return Response('Image was uploaded')
 
@@ -151,3 +151,77 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+
+
+
+
+
+
+# store/views.py
+
+from django.db.models import Sum, Avg,F
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAdminUser
+from django.contrib.auth.models import User
+from ..models import Product, Order, Review, OrderItem
+from ..serializers import DashboardSerializer
+from datetime import datetime
+from django.db import models
+
+class DashboardView(APIView): 
+
+    def get(self, request):
+        # Calculate the total number of users
+        users_count = User.objects.count()
+
+        # Calculate the number of orders delivered
+        orders_delivered_count = Order.objects.filter(isDelivered=True).count()
+
+        # Calculate the total income from all orders
+        total_income = Order.objects.filter(isPaid=True).aggregate(Sum('totalPrice'))['totalPrice__sum'] or 0
+
+        # Calculate the number of products
+        number_of_products = Product.objects.count()
+
+        # Monthly revenue (assuming paid orders)
+        current_year = datetime.now().year
+        orders_by_month = (
+            Order.objects.filter(isPaid=True, createdAt__year=current_year)
+            .annotate(month=models.functions.TruncMonth('createdAt'))
+            .values('month')
+            .annotate(revenue=Sum('totalPrice'))
+            .order_by('month')
+        )
+        monthly_revenue = [
+            {"month": order['month'].strftime('%b'), "revenue": order['revenue']}
+            for order in orders_by_month
+        ]
+
+        # Top five products by quantity sold
+        top_products = (
+            OrderItem.objects.values('product__name')
+            .annotate(quantity_sold=Sum('qty'))
+            .order_by('-quantity_sold')[:5]
+        )
+        top_products = [{"product":product["product__name"] , "quantity":product["quantity_sold"]} for product in top_products]
+ 
+        top_products_ratings = [{"product":product.name,"rating":product.rating} for product in Product.objects.all()]
+
+        # Products and their in-stock number
+        products_in_stock = Product.objects.values('name', 'countInStock').order_by('-countInStock')
+
+        # Prepare data for the response
+        data = {
+            "users_count": users_count,
+            "orders_delivered_count": orders_delivered_count,
+            "total_income": total_income,
+            "number_of_products": number_of_products,
+            "monthly_revenue": monthly_revenue,
+            "top_products": list(top_products),
+            "top_products_ratings": list(top_products_ratings),
+            "products_in_stock": list(products_in_stock)
+        }
+
+        serializer = DashboardSerializer(data)
+        return Response(serializer.data)
